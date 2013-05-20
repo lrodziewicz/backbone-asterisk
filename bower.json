@@ -1,0 +1,20 @@
+{
+  "name": "Backbone asterisk",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "backbone": "1.0.0",
+    "lodash": "1.2.1",
+    "jquery": "2.*",
+    "pubsub.js": "git://github.com/Sahadar/pubsub.js.git"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "karma": "*"
+  }
+}
