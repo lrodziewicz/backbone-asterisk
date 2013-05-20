@@ -8,14 +8,10 @@ basePath = '';
 
 // list of files / patterns to load in the browser
 files = [
-  // MOCHA,
-  // MOCHA_ADAPTER,
   JASMINE,
   JASMINE_ADAPTER,
   REQUIRE,
   REQUIRE_ADAPTER,
-
-  //{pattern: 'components/chai/chai.js', included: false},
 
   { pattern: 'components/jquery/jquery.js', included: false },
   { pattern: 'components/lodash/lodash.js', included: false },

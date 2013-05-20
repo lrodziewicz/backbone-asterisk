@@ -13,8 +13,7 @@
     "pubsub.js": "git://github.com/Sahadar/pubsub.js.git"
   },
   "devDependencies": {
-    "mocha": "*",
-    "chai": "*",
+    "jasmine": "*",
     "karma": "*"
   }
 }
