@@ -77,6 +77,9 @@ define(['backbone', 'BaseView'], function (Backbone, BaseView) {
                 expect(view.getPosition(childView4)).toEqual(0);
                 expect(view.getPosition(childView2)).toEqual(1);
                 expect(view.getPosition(childView1)).toEqual(2);
+
+                expect(view.getPosition('c1')).toEqual(2);
+                expect(view.getPosition('c2')).toEqual(1);
             });
 
         });
