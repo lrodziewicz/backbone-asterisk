@@ -70,6 +70,15 @@ define(['backbone', 'BaseView'], function (Backbone, BaseView) {
                 expect(view.get("c2").name).toBe('child2');
             });
 
+            it('can return a valid position of a view in a collection', function () {
+                view.add([childView4, childView3]);
+                view.add({"c2": childView2, "c1": childView1}, 1);
+
+                expect(view.getPosition(childView4)).toEqual(0);
+                expect(view.getPosition(childView2)).toEqual(1);
+                expect(view.getPosition(childView1)).toEqual(2);
+            });
+
         });
 
     });

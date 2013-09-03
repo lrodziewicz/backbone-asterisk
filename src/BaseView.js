@@ -102,6 +102,26 @@ define(['lodash', 'backbone'], function(_, Backbone) {
             return entry ? entry.view : void 0;
         },
 
+        getPosition: function(arg) {
+            var position;
+
+            // Name given
+            if(_.isString(arg)) {
+                position = _.findKey(this._views, function(element) {
+                    return element.name === arg;
+                });
+            }
+            // Instance of Backbone.View given
+            else if (arg instanceof Backbone.View) {
+                position = _.findKey(this._views, function(element) {
+                    return element.view.cid === arg.cid;
+                });
+            }
+            else throw "Expecting either string or instance of Backbone.View";
+
+            return position !== undefined ? parseInt(position, 10) : void 0;
+        },
+
         size: function () {
             return this._views.length;
         }
