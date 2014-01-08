@@ -1,7 +1,6 @@
 {
   "name": "Backbone asterisk",
   "version": "0.0.1",
-  "componentsDirectory": "components/",
   "ignore": [
     "**/.*",
     "node_modules",
