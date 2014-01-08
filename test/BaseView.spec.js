@@ -82,6 +82,13 @@ define(['backbone', 'BaseView'], function (Backbone, BaseView) {
                 expect(view.getPosition('c2')).toEqual(1);
             });
 
+            it('can return a valid count of views in a collection', function () {
+                view.add([childView1, childView2]);
+                view.add({"c3": childView3});
+
+                expect(view.size()).toEqual(3);
+            });
+
         });
 
     });
