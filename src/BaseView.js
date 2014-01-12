@@ -1,8 +1,8 @@
-define(['lodash', 'backbone'], function(_, Backbone) {
+define(['lodash', 'backbone'], function (_, Backbone) {
 
     'use strict';
 
-    var BaseView = function(options) {
+    var BaseView = function (options) {
         this._views = [];
 
         Backbone.View.apply(this, [options]);
@@ -10,11 +10,11 @@ define(['lodash', 'backbone'], function(_, Backbone) {
 
     _.extend(BaseView.prototype, Backbone.View.prototype, {
 
-        _prepareEntry: function(parameters) {
+        _prepareEntry: function (parameters) {
             var entry;
 
             // If given an instance of Backbone.View
-            if(parameters instanceof Backbone.View) {
+            if (parameters instanceof Backbone.View) {
                 entry = {
                     name: parameters.cid,
                     view: parameters
@@ -52,7 +52,7 @@ define(['lodash', 'backbone'], function(_, Backbone) {
             if(!view instanceof Backbone.View) throw "View have to be an instance of Backbone.View";
         },
 
-        add: function(parameters, at) {
+        add: function (parameters, at) {
             var entry = this._prepareEntry(parameters);
 
             if(at) {
@@ -85,7 +85,7 @@ define(['lodash', 'backbone'], function(_, Backbone) {
             return this._views.push(entry);
         },
 
-        get: function(arg) {
+        get: function (arg) {
             var entry;
             // Get by position
             if (_.isNumber(arg)) {
@@ -102,7 +102,7 @@ define(['lodash', 'backbone'], function(_, Backbone) {
             return entry ? entry.view : void 0;
         },
 
-        getPosition: function(arg) {
+        getPosition: function (arg) {
             var position;
 
             // Name given
@@ -124,6 +124,32 @@ define(['lodash', 'backbone'], function(_, Backbone) {
 
         size: function () {
             return this._views.length;
+        },
+
+        pullOut: function (arg) {
+            var position = this.getPosition(arg);
+
+            this._views.splice(position, 1);
+        },
+
+        // Overwrite default remove method to trigger dispose automatically
+        remove: function () {
+            this.dispose();
+
+            Backbone.View.prototype.remove.call(this);
+        },
+
+        dispose: function () {
+            _.each(this._views, function (entry) {
+                entry.view.remove();
+
+                //TODO: remove child view from collection
+            });
+
+            // Call custom dispose function if defined
+            if (_.isFunction(this.onDispose)) {
+                this.onDispose();
+            }
         }
     });
 

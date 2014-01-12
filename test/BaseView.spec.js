@@ -89,6 +89,37 @@ define(['backbone', 'BaseView'], function (Backbone, BaseView) {
                 expect(view.size()).toEqual(3);
             });
 
+            it('can remove view by name from collection', function () {
+                view.add({"c1": childView1});
+                view.pullOut('c1');
+
+                expect(view.size()).toEqual(0);
+            });
+
+            it('call dispose method on remove', function () {
+                spyOn(view, 'dispose');
+                view.remove();
+
+                expect(view.dispose).toHaveBeenCalled();
+            });
+
+            it('call custom onDispose method if defined', function () {
+                view.onDispose = function () {};
+                spyOn(view, 'onDispose');
+                view.remove();
+
+                expect(view.onDispose).toHaveBeenCalled();
+            });
+
+            it('call remove on every child view before remove itself', function () {
+                spyOn(childView1, 'remove');
+                spyOn(childView2, 'remove');
+                view.add([childView1, childView2]);
+
+                view.remove();
+                expect(childView1.remove).toHaveBeenCalled();
+                expect(childView2.remove).toHaveBeenCalled();
+            });
         });
 
     });
