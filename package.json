@@ -11,7 +11,8 @@
   },
   "devDependencies": {
     "karma": "~0.10",
-    "jasmine": "*"
+    "jasmine-node": "*",
+    "karma-jasmine": "*"
   },
   "scripts": {
      "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
