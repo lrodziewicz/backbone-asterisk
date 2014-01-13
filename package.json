@@ -1,0 +1,15 @@
+{
+  "name": "Backbone asterisk",
+  "dependencies": {
+    "backbone": "1.1.0",
+    "lodash": "2.4.1",
+    "jquery": "2.*",
+  },
+  "devDependencies": {
+    "karma": "~0.10",
+    "jasmine": "*"
+  },
+  "scripts": {
+     "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
+  }
+}
