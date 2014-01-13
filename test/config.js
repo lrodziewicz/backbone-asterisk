@@ -21,10 +21,9 @@ requirejs.config({
     },
 
     paths: {
-        jquery: '../components/jquery/jquery',
-        lodash: '../components/lodash/lodash',
-        backbone: '../components/backbone/backbone',
-        pubsub: '../components/pubsub.js/pubsub'
+        jquery: '../node_modules/jquery/dist/jquery',
+        lodash: '../node_modules/lodash/lodash',
+        backbone: '../node_modules/backbone/backbone'
     },
 
     map: {

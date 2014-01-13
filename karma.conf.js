@@ -14,10 +14,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      { pattern: 'components/jquery/jquery.js', included: false },
-      { pattern: 'components/lodash/lodash.js', included: false },
-      { pattern: 'components/backbone/backbone.js', included: false },
-      { pattern: 'components/pubsub.js/pubsub.js', included: false },
+      { pattern: 'node_modules/jquery/dist/jquery.js', included: false },
+      { pattern: 'node_modules/lodash/lodash.js', included: false },
+      { pattern: 'node_modules/backbone/backbone.js', included: false },
 
       { pattern: 'src/**/*.js', included: false },
       { pattern: 'test/**/*.spec.js', included: false },
