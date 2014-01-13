@@ -1,5 +1,9 @@
 {
-  "name": "Backbone asterisk",
+  "name": "backbone-asterisk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lrodziewicz/backbone-asterisk.git"
+  },
   "dependencies": {
     "backbone": "1.1.0",
     "lodash": "2.4.1",
