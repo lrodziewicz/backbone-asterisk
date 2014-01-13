@@ -96,6 +96,13 @@ define(['backbone', 'BaseView'], function (Backbone, BaseView) {
                 expect(view.size()).toEqual(0);
             });
 
+            it('can remove view by index from collection', function () {
+                view.add({"c1": childView1});
+                view.pullOut(0);
+
+                expect(view.size()).toEqual(0);
+            });
+
             it('call dispose method on remove', function () {
                 spyOn(view, 'dispose');
                 view.remove();

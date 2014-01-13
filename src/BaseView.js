@@ -127,7 +127,7 @@ define(['lodash', 'backbone'], function (_, Backbone) {
         },
 
         pullOut: function (arg) {
-            var position = this.getPosition(arg);
+            var position = _.isNumber(arg) ? arg : this.getPosition(arg);
 
             this._views.splice(position, 1);
         },
@@ -140,11 +140,11 @@ define(['lodash', 'backbone'], function (_, Backbone) {
         },
 
         dispose: function () {
-            _.each(this._views, function (entry) {
-                entry.view.remove();
+            for (var i = this._views.length - 1; i >= 0; i--) {
+                this._views[i].view.remove();
 
-                //TODO: remove child view from collection
-            });
+                this.pullOut(i);
+            }
 
             // Call custom dispose function if defined
             if (_.isFunction(this.onDispose)) {
