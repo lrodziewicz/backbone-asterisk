@@ -15,6 +15,6 @@
     "karma-jasmine": "*"
   },
   "scripts": {
-     "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
+     "test": "./node_modules/.bin/karma start test/travis.config.js --single-run --browsers PhantomJS"
   }
 }
