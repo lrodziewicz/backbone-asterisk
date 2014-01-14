@@ -1,6 +1,7 @@
 # Backbone.js Asterisk
 
 [![Build Status](https://travis-ci.org/lrodziewicz/backbone-asterisk.png?branch=master)](https://travis-ci.org/lrodziewicz/backbone-asterisk)
+[![Dependency Status](https://gemnasium.com/lrodziewicz/backbone-asterisk.png)](https://gemnasium.com/lrodziewicz/backbone-asterisk)
 
 This library is extension for Backbone.js View component adding some sugar on top of it.
 
