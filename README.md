@@ -10,7 +10,7 @@ Right now this repository contains a BaseView that add functionality for managin
 
 ## Usage
 
-Adding views
+###Adding views
 
 ```javascript
 var main = new BaseView();
@@ -39,6 +39,17 @@ main.add({'foo': child1, 'bar': child2});
 
 // By name at given position
 main.add({'foo': child1, 'bar': child2}, 3);
+```
+
+### Getting views
+
+You can retrieve view by it's name or position
+```javascript
+// Get view by it's name
+main.get('foo');
+
+//Get view by it's position
+main.get(1);
 ```
 
 ## License
