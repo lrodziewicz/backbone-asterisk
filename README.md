@@ -52,6 +52,22 @@ main.get('foo');
 main.get(1);
 ```
 
+To check how many child views are currently added, simply
+```javascript
+main.size();
+```
+
+### Removing child views
+
+You can remove view by name or position
+```javascript
+// By position
+main.pullOut(1);
+
+// By name
+main.pullOut('foo');
+```
+
 ## License
 
 This library is under the MIT License (MIT), see the file
