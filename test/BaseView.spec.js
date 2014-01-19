@@ -1,4 +1,4 @@
-define(['backbone', 'BaseView'], function (Backbone, BaseView) {
+define(['jquery', 'backbone', 'BaseView'], function ($, Backbone, BaseView) {
 
     describe('BaseView', function () {
 
@@ -7,7 +7,7 @@ define(['backbone', 'BaseView'], function (Backbone, BaseView) {
             var view, childView, childView2, childView3, childView4;
 
             beforeEach(function(){
-                view = new BaseView();
+                view = new (BaseView.extend({}))();
 
                 childView1 = new (Backbone.View.extend({ name: 'child1'}))();
                 childView2 = new (Backbone.View.extend({ name: 'child2'}))();
@@ -129,5 +129,26 @@ define(['backbone', 'BaseView'], function (Backbone, BaseView) {
             });
         });
 
+        describe('(rendering views)', function() {
+
+            var view, childView, childView2;
+
+            beforeEach(function(){
+                view = new (BaseView.extend({}))();
+
+                childView1 = new (BaseView.extend({}))();
+                childView2 = new (BaseView.extend({}))();
+            });
+
+            it('trigger render on each child view', function () {
+                spyOn(childView1, 'render').andCallThrough();
+                spyOn(childView2, 'render').andCallThrough();
+                view.add([childView1, childView2]);
+
+                view.render();
+                expect(childView1.render).toHaveBeenCalled();
+                expect(childView2.render).toHaveBeenCalled();
+            });
+        });
     });
 });

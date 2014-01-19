@@ -2,13 +2,13 @@ define(['lodash', 'backbone'], function (_, Backbone) {
 
     'use strict';
 
-    var BaseView = function (options) {
-        this._views = [];
+    var BaseView = Backbone.View.extend({
 
-        Backbone.View.apply(this, [options]);
-    };
+        constructor: function (options) {
+            this._views = [];
 
-    _.extend(BaseView.prototype, Backbone.View.prototype, {
+            Backbone.View.apply(this, [options]);
+        },
 
         _prepareEntry: function (parameters) {
             var entry;
@@ -136,7 +136,7 @@ define(['lodash', 'backbone'], function (_, Backbone) {
         remove: function () {
             this.dispose();
 
-            Backbone.View.prototype.remove.call(this);
+            return Backbone.View.prototype.remove.call(this);
         },
 
         dispose: function () {
@@ -150,10 +150,28 @@ define(['lodash', 'backbone'], function (_, Backbone) {
             if (_.isFunction(this.onDispose)) {
                 this.onDispose();
             }
+        },
+
+        render: function () {
+            if(this.size()) {
+                this.$el.empty();
+                var container = document.createDocumentFragment();
+              
+                _.each(this._views, function (entry) {
+                    container.appendChild(entry.view.render().el);
+                });
+                
+                this.$el.append(container);                
+            }
+            else {
+                if(_.isFunction(this.template)) {
+                    this.$el.html(this.template());
+                }
+            }
+
+            return this;
         }
     });
-
-    BaseView.extend = Backbone.View.extend;
 
     return BaseView;
 });
