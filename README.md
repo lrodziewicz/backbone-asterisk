@@ -57,6 +57,15 @@ To check how many child views are currently added, simply
 main.size();
 ```
 
+You can also get a position of a view by it's name or instance
+```javascript
+// Get position by name
+main.getPosition('foo');
+
+// Get position by view instance
+main.getPosition(child1);
+```
+
 ### Removing child views
 
 You can remove view by name or position
@@ -66,6 +75,19 @@ main.pullOut(1);
 
 // By name
 main.pullOut('foo');
+```
+
+### Disposing views
+
+Child views are automatically disposed on parents view remove. To define custom dispose method you can simply add `onDispose` method.
+
+```javascript
+var view = BaseView.extend({
+	onDispose: function () {
+		// Clean up jQuery UI behaviour before removing the view
+		this.$el.find('.foo').draggable('destroy');
+	}
+});
 ```
 
 ## License
