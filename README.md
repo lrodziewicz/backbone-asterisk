@@ -79,7 +79,7 @@ main.pullOut('foo');
 
 ### Disposing views
 
-Child views are automatically disposed on parents view remove. To define custom dispose method you can simply add `onDispose` method.
+Child views are automatically disposed on parents view remove. To define custom dispose behaviour you can simply add `onDispose` method. It will be automatically called on remove.
 
 ```javascript
 var view = BaseView.extend({
