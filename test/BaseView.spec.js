@@ -149,6 +149,20 @@ define(['jquery', 'backbone', 'BaseView'], function ($, Backbone, BaseView) {
                 expect(childView1.render).toHaveBeenCalled();
                 expect(childView2.render).toHaveBeenCalled();
             });
+
+            it('if no views are added, us template function for generating HTML', function () {
+                var template = '<a href="http://example.com/">example</a>';
+                view.template = function () {
+                    return template;
+                };
+
+                spyOn(view, 'template').andCallThrough();
+
+                expect(view.size()).toEqual(0);
+                view.render();
+                // TODO: add checking content of el
+                expect(view.template).toHaveBeenCalled();
+            });
         });
     });
 });
