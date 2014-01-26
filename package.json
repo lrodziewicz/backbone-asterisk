@@ -7,7 +7,7 @@
   "dependencies": {
     "backbone": "1.1.0",
     "lodash": "2.4.1",
-    "jquery": "2.1.0-rc1"
+    "jquery": "2.1.0"
   },
   "devDependencies": {
     "karma": "~0.10",
