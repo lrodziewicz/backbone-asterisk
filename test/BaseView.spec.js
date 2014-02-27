@@ -141,8 +141,8 @@ define(['jquery', 'backbone', 'BaseView'], function ($, Backbone, BaseView) {
             });
 
             it('trigger render on each child view', function () {
-                spyOn(childView1, 'render').andCallThrough();
-                spyOn(childView2, 'render').andCallThrough();
+                spyOn(childView1, 'render').and.callThrough();
+                spyOn(childView2, 'render').and.callThrough();
                 view.add([childView1, childView2]);
 
                 view.render();
@@ -150,17 +150,16 @@ define(['jquery', 'backbone', 'BaseView'], function ($, Backbone, BaseView) {
                 expect(childView2.render).toHaveBeenCalled();
             });
 
-            it('if no views are added, us template function for generating HTML', function () {
+            it('if no views are added, use template function for generating HTML', function () {
                 var template = '<a href="http://example.com/">example</a>';
                 view.template = function () {
                     return template;
                 };
 
-                spyOn(view, 'template').andCallThrough();
+                spyOn(view, 'template').and.callThrough();
 
                 expect(view.size()).toEqual(0);
                 view.render();
-                // TODO: add checking content of el
                 expect(view.template).toHaveBeenCalled();
             });
         });
