@@ -52,6 +52,7 @@ define(['lodash', 'backbone'], function (_, Backbone) {
             if(!view instanceof Backbone.View) throw "View have to be an instance of Backbone.View";
         },
 
+        // Found at http://jsperf.com/array-prototype-move/11
         _arrayMove: function(array, from, to) {
             var target = array[from];
             var inc = (to - from) / Math.abs (to - from);

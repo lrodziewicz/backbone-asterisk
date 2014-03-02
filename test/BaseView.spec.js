@@ -89,17 +89,24 @@ define(['jquery', 'backbone', 'BaseView'], function ($, Backbone, BaseView) {
                 expect(view.size()).toEqual(3);
             });
 
-            it('can change view position using it\'s name', function () {
+            it('can change view position using it\'s name or position', function () {
                 view.add({
                     'c1': childView1,
                     'c2': childView2,
                     'c3': childView3
                 });
 
+                // move by name
                 view.move('c1', 2);
                 expect(view.getPosition('c1')).toEqual(2);
                 expect(view.getPosition('c2')).toEqual(0);
                 expect(view.getPosition('c3')).toEqual(1);
+
+                // move by position
+                view.move(1, 2);
+                expect(view.getPosition('c1')).toEqual(1);
+                expect(view.getPosition('c2')).toEqual(0);
+                expect(view.getPosition('c3')).toEqual(2);
             });
 
             it('can remove view by name from collection', function () {
