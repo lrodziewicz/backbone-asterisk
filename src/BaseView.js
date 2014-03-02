@@ -52,6 +52,16 @@ define(['lodash', 'backbone'], function (_, Backbone) {
             if(!view instanceof Backbone.View) throw "View have to be an instance of Backbone.View";
         },
 
+        _arrayMove: function(array, from, to) {
+            var target = array[from];
+            var inc = (to - from) / Math.abs (to - from);
+            var current = from;
+            for (; current != to; current += inc) {
+                array[current] = array[current + inc];
+            }
+            array[to] = target;
+        },
+
         add: function (parameters, at) {
             var entry = this._prepareEntry(parameters);
 
@@ -130,6 +140,12 @@ define(['lodash', 'backbone'], function (_, Backbone) {
             var position = _.isNumber(arg) ? arg : this.getPosition(arg);
 
             this._views.splice(position, 1);
+        },
+
+        move: function (arg, to) {
+            var from = _.isNumber(arg) ? arg : this.getPosition(arg);
+
+            this._arrayMove(this._views, from, to);
         },
 
         // Overwrite default remove method to trigger dispose automatically
