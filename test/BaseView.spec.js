@@ -4,7 +4,7 @@ define(['jquery', 'backbone', 'BaseView'], function ($, Backbone, BaseView) {
 
         describe('(managing views)', function() {
 
-            var view, childView, childView2, childView3, childView4;
+            var view, childView1, childView2, childView3, childView4;
 
             beforeEach(function(){
                 view = new (BaseView.extend({}))();
@@ -20,7 +20,7 @@ define(['jquery', 'backbone', 'BaseView'], function ($, Backbone, BaseView) {
 
                 function Abc() {}
                 var a = new Abc();
-                expect(function(){view.add(Abc);}).toThrow();
+                expect(function(){view.add(a);}).toThrow();
             });
 
             it('can add view at given position', function() {
@@ -131,7 +131,7 @@ define(['jquery', 'backbone', 'BaseView'], function ($, Backbone, BaseView) {
 
         describe('(rendering views)', function() {
 
-            var view, childView, childView2;
+            var view, childView1, childView2;
 
             beforeEach(function(){
                 view = new (BaseView.extend({}))();
